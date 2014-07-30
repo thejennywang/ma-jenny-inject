@@ -26,5 +26,12 @@ describe Array do
 		it 'concatenate stringz' do
 			expect(["can ", "i ", "has ", "sticker ", "please", "?"].Jenny_inject{|memo, element| memo << element}).to eq("can i has sticker please?")
 		end
+
+		it 'does not destroy the original block' do
+			a = [1, 2, 3, 4, 5]
+			a.Jenny_inject{|memo, element| memo + element}
+			expect(a).to eq([1, 2, 3, 4, 5])
+		end
+
 	end
 end
